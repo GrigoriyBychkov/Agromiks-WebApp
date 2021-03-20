@@ -36,30 +36,12 @@ router.post('/send', async (req: Request | any, res: Response) => {
     },
   });
 
-  // const transporter = nodemailer.createTransport({
-  //   host: 'smtp.yandex.com',
-  //   port: 587,
-  //   secure: false, // true for 465, false for other ports
-  //   auth: {
-  //     user: 'agromiks.metr', // generated ethereal user
-  //     pass: '1qaz21qaZ', // generated ethereal password
-  //   }
-  // });
-
   const mailOptions = {
     from: 'am@agromiks.ru',
     to: 'imansiberia@icloud.com, gby@gby.su',
     subject: req.body.company,
     text: req.body.text
   };
-  // const info = await transporter.sendMail({
-  //   from: req.body.email, // sender address
-  //   to: 'imansiberia@icloud.com, gby@gby.su', // list of receivers
-  //   subject: 'Feedback from site', // Subject line
-  //   text: req.body.text, // plain text body
-  // });
-  // console.log('Message sent: ', info.messageId);
-  // console.log('Preview URL: ', nodemailer.getTestMessageUrl(info));
 
   transporter.sendMail(mailOptions, (error, info) =>{
     if (error) {
