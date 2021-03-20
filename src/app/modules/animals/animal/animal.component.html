@@ -1,0 +1,94 @@
+<mat-tab-group>
+  <mat-tab label="Животное">
+    <div class="form-container ">
+      <div class="">
+        <mat-card>
+          <mat-card-title>Редактировать животное</mat-card-title>
+          <mat-card-content>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+              <p>
+                <mat-form-field>
+                  <input type="text" matInput placeholder="ID" formControlName="id">
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <mat-label>Дата рождения</mat-label>
+                  <input matInput [matDatepicker]="picker1" formControlName="dateBirth">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <input type="text" matInput placeholder="Коментарий" formControlName="comment">
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <mat-label>Дата убыли</mat-label>
+                  <input matInput [matDatepicker]="picker2" formControlName="dateLoss">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </p>
+              <p *ngIf="error" class="error">
+                {{ error }}
+              </p>
+              <div class="buttons-block">
+                <div class="button">
+                  <button type="submit" mat-raised-button>Сохранить</button>
+                </div>
+                <div class="button">
+                  <button mat-raised-button [routerLink]="'/animals/update/' + animalId">Ввод данных</button>
+                </div>
+              </div>
+
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Данные">
+    <table mat-table [dataSource]="dataSource" class="animals-table">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID</th>
+        <td mat-cell *matCellDef="let element" [routerLink]="'/animals/getDataById/' + element.id"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateBirth">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата ввода</th>
+        <td mat-cell *matCellDef="let element"> {{format(element.date)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Вес</th>
+        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="comment">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Комментарий</th>
+        <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element">
+          <mat-menu #appMenu="matMenu">
+            <button mat-menu-item [routerLink]="'/animals/getDataById/' + element.id">Редактировать</button>
+            <button mat-menu-item (click)="removeData(element)">Удалить</button>
+          </mat-menu>
+
+
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-tab>
+</mat-tab-group>
+

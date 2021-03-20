@@ -1,0 +1,50 @@
+<div class="form-container">
+
+  <div class="form-center">
+    <mat-card>
+      <mat-card-title>Ввод данных</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <p>
+            <mat-form-field>
+              <mat-label>Номер животного</mat-label>
+
+              <input type="text"  matInput  formControlName="animalId">
+
+<!--              <mat-autocomplete #auto="matAutocomplete">-->
+<!--                <mat-option *ngFor="let animalId of autoFilter(ids)" [value]="animalId" >-->
+<!--                  {{ animalId }}-->
+<!--                </mat-option>-->
+<!--              </mat-autocomplete>-->
+
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <mat-label>Дата ввода</mat-label>
+              <input matInput [matDatepicker]="picker1" formControlName="date">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input type="number" matInput placeholder="Вес" formControlName="weight">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input type="text" matInput placeholder="Коментарий" formControlName="comment">
+            </mat-form-field>
+          </p>
+          <p *ngIf="error" class="error">
+            {{ error }}
+          </p>
+          <div class="button">
+            <button type="submit" mat-raised-button>Обновить</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

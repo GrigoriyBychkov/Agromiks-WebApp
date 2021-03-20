@@ -1,0 +1,14 @@
+
+<nav mat-tab-nav-bar>
+  <a mat-tab-link [routerLink]="'list'" routerLinkActive #rlaList="routerLinkActive"
+     [active]="rlaList.isActive">
+    Список
+  </a>
+
+  <a mat-tab-link [routerLink]="'update'" routerLinkActive #rlaUpdate="routerLinkActive"
+     [active]="rlaUpdate.isActive">
+    Ввод данных
+  </a>
+</nav>
+
+<router-outlet></router-outlet>

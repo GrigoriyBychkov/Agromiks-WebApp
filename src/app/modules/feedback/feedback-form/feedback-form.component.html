@@ -1,0 +1,42 @@
+<div class="form-container">
+
+  <div class="form-center">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-card>
+      <mat-card-title>Форма обратной свзяи</mat-card-title>
+      <mat-card-content>
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Ваше имя" formControlName="name">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="email" matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Компания" formControlName="companyName">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <textarea type="text" matInput placeholder="Введите текст" formControlName="text">
+
+            </textarea>
+          </mat-form-field>
+        </p>
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
+        <div class="button">
+          <button type="submit"
+                  [disabled]="form.invalid"
+                  mat-raised-button>Отправить</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    </form>
+  </div>
+</div>

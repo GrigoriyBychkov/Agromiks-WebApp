@@ -1,0 +1,15 @@
+
+ .widget-boxes {
+   padding: 5px;
+   display: flex;
+   flex-direction: row;
+   max-width: 100%;
+   flex-wrap: wrap;
+
+   .widget {
+     flex: 1 1;
+     min-width: 300px;
+     flex-wrap: wrap;
+     margin: 5px;
+   }
+ }

@@ -1,0 +1,36 @@
+<mat-toolbar  color="primary">
+  <mat-toolbar-row>
+    <div>{{title}}</div>
+    <div class="spacer"></div>
+
+    <div class="right-menu" *ngIf="isLoggedIn()">
+      <button mat-button [routerLink]="'/feedback'">Обратная связь</button>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <span class="material-icons">person</span>
+        Пользователь
+      </button>
+
+      <!-- #enddocregion mat-menu-trigger-for -->
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/profile'">Мой профиль</button>
+        <button mat-menu-item (click)="logout()">Выйти</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-drawer-container class="main-container">
+  <mat-drawer mode="side" opened>
+    <div class="side-menu">
+      <button mat-button routerLinkActive="active-link" [routerLink]="'/dashboard'">Главная</button>
+      <button mat-button routerLinkActive="active-link" [routerLink]="'/animals'">КРС</button>
+      <button mat-button routerLinkActive="active-link" [routerLink]="'/animals/update'">Ввод данных</button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

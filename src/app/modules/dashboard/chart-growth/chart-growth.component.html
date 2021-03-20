@@ -1,0 +1,28 @@
+<mat-card>
+  <div #chart></div>
+  <div>
+    <form  [formGroup]="form" class="form">
+      <mat-form-field>
+        <mat-label>Дата от</mat-label>
+         <input matInput [matDatepicker]="picker1" formControlName="from">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Дата до</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="to">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Группировать по</mat-label>
+        <mat-select  formControlName="period">
+          <mat-option [value]="'week'">Неделя</mat-option>
+          <mat-option [value]="'month'">Месяц</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+</mat-card>

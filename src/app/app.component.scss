@@ -1,0 +1,19 @@
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  button {
+    margin: 4px;
+  }
+
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+
+.main-container {
+  height: calc(100% - 64px);
+}
+
+

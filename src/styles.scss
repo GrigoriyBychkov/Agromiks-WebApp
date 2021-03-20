@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-root {
+  height: 100%;
+}
+
+.active-link {
+  background: #3f50b630;
+  margin: 4px;
+}
+
+.table-actions {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    margin: 5px;
+  }
+}
+
+
+.form-container {
+  display: flex;
+  margin-top: 25px;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 70px);
+
+  .form-center {
+    width: 400px;
+    max-width: 100vw;
+    height: 300px;
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}
+
+.error {
+  color: #ac0000;
+}
+
+.center {
+  text-align: center;
+}
